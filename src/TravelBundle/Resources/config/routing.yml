@@ -1,0 +1,7 @@
+travel_homepage:
+    path:     /
+    defaults: { _controller: TravelBundle:Default:index }
+
+travel_ajax:
+    path:     /get-hotel
+    defaults: { _controller: TravelBundle:Default:getHotelAjax }

@@ -1,0 +1,73 @@
+{% extends '@ExamBlanc/default/layout.html.twig' %}
+
+{% block body %}
+
+    <div class="container sf2">
+        <div class="row ennonce">
+            <form id="rechercheForm" action="{{ path('travel_ajax') }}" method="post">
+               <div class="input-field col s3">
+    	          <input id="name" type="text" name="name" class="validate">
+    	          <label for="name">Nom</label>
+    	        </div>
+    	        <div class="input-field col s3">
+    	          <input name="address" id="address" type="text" class="validate">
+    	          <label for="address">address</label>
+    	        </div>
+    	        <div class="input-field col s3">
+    	          <input name="zipcode" id="zipcode" type="text" class="validate">
+    	          <label for="zipcode">zipcode</label>
+    	        </div>
+    	        <div class="input-field col s3">
+    	          <input name="city" id="city" type="text" class="validate">
+    	          <label for="city">city</label>
+    	        </div>
+    	        <div class="input-field col s3">
+    	          <input name="capacity" id="capacity" type="text" class="validate">
+    	          <label for="capacity">capacity</label>
+    	        </div>
+    	        <div class="input-field col s3">
+    			    <select name="stars">
+    					<option value="" disabled selected>Choose your star</option>
+                        <option value="0">0</option>
+    					<option value="1">1</option>
+    					<option value="2">2</option>
+    					<option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+    			    </select>
+    			    <label>Materialize Multiple Select</label>
+    			  </div>
+                  <div class="input-field col s3">
+                    <button class="btn waves-effect waves-light" type="submit">Submit
+                        <i class="material-icons right">send</i>
+                    </button>
+                  </div>
+              </form>
+        </div>
+        <div class="row result">
+            {{ include('TravelBundle:Default:_list.html.twig') }}
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('select').material_select();
+        });
+        $(document).on("submit", "#rechercheForm", function(e) {
+            e.preventDefault();
+            var frm = $(this).closest('form');
+
+            $.post(frm.attr('action'), frm.serialize(), function(data) {
+                $("div.row.result").html(data);
+            });
+        });
+    </script>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,44 @@
+TravelBundle\Entity\Room:
+    type: entity
+    table: room
+    indexes:
+        IDX_729F519B3243BB18:
+            columns:
+                - hotel_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        roomNumber:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: room_number
+        capacity:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+        book:
+            type: boolean
+            nullable: false
+    manyToOne:
+        hotel:
+            targetEntity: Hotel
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                hotel_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

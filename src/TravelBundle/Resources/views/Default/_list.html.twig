@@ -1,0 +1,21 @@
+{% for h in all_hotel %}
+	{% set nbPlace = 0 %}
+	{% set nbRoom = 0 %}
+	{% for r in all_room %}
+		{% if h == r.hotel and r.book == 0 %}
+				{% set nbPlace =  nbPlace + r.capacity %}
+				{% set nbRoom = nbRoom + 1 %}
+		{% endif %}
+	{% endfor %}
+	{% if nbPlace >= capacity %}
+		<div class="col s3">
+			<p>{{ h.name }}</p>
+			<p>{{ h.stars }} <i class="material-icons">star</i></p>
+			<p>{{ h.address }}</p>
+			<p>{{ h.zipcode }}</p>
+			<p>{{ h.city }}</p>
+			<p>{{ h.capacity }}</p>
+			<p>{{ nbPlace }}</p>
+		</div>
+	{% endif %}
+{% endfor %}

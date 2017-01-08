@@ -1,0 +1,7 @@
+travel:
+    resource: "@TravelBundle/Resources/config/routing.yml"
+    prefix:   /travel
+
+exam_final:
+    resource: "@ExamBlancBundle/Resources/config/routing.yml"
+    prefix:   /
