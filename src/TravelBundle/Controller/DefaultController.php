@@ -25,14 +25,7 @@ class DefaultController extends Controller
 
     public function getHotelAjaxAction(Request $request)
     {
-    	 $tab=[];
-
-    	// $tab['name'] = $request->get('name');
-    	// $tab['address'] = $request->get('address');
-    	// $tab['zipcode'] = $request->get('zipcode');
-    	// $tab['city'] = $request->get('city');
-    	// $tab['capacity'] = $request->get('capacity');
-    	// $tab['stars'] = $request->get('stars');
+    	$tab=[];
     	$capacity = 0;
     	if ($_REQUEST['capacity'] != "")
     	 	$capacity = $_REQUEST['capacity'];
@@ -57,7 +50,7 @@ class DefaultController extends Controller
         		}
         	}   
         }
-        
+
         $all_hotel = $qb->getQuery()->getResult();
 
         foreach ($all_hotel as $v) {
